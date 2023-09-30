@@ -1,3 +1,4 @@
 # competitive-programming
+## personal notes
 
-<p> Anything about competitive programming. 🙂 </p> 
+anything related to competitive programming. 🙂  
