@@ -1,4 +1,4 @@
-# competitive-programming
-## personal notes
+# competitive-programming 
+personal notes
 
 anything related to competitive programming. 🙂  
