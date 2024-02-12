@@ -1,8 +1,8 @@
 /*
-syxm1
-problem : https://atcoder.jp/contests/abc340/tasks/abc340_e
-
-lazy propagation with PURQ segment tree.
+    syxm1
+    problem : https://atcoder.jp/contests/abc340/tasks/abc340_e
+    
+    lazy propagation with PURQ segment tree.
 */
 
 #include<bits/stdc++.h>
