@@ -110,34 +110,59 @@ const ll INF = 1e18;
 
 // const int dx[4] = {-1, 0, 1, 0}; // clockwise
 // const int dy[4] = {0, 1, 0, -1}; // starting from N
-// const int ddx[8] = {-1, -1, -1, 0, 1, 1, 1, 0}; // clocwise
+// const int ddx[8] = {-1, -1, -1, 0, 1, 1, 1, 0}; // clockwise
 // const int ddy[8] = {-1, 0, 1, 1, 1, 0, -1, -1}; // starting from NW
 
 #define endl "\n"
 
-int n, x;
-set<int> s;
-
-void pushh(int p) {
-    if(p % 2 != 0) return;
-    int k = (p + 2) / 2;
-    if(k >= max(x, 2) and k <= (n+x)/2) s.insert(k);
-}
-
-void f(int p) {
-    for(int i = 1; i * i <= p; i++)
-        if(p%i==0) {pushh(i); pushh(p/i);}
-}
-
-
 void solve(int tc) {
     /*
-    
+        n % (2k - 2) = x
+        n % (2k - 2) = 2k - x
+        find possible k!
+
+        n % (2k - 2) = x --> n = y * (2k-2) + x --> n-x = y * (2k-2) ... (I)
+        n % (2k - 2) = 2k - x   --> n % (2k-2) = 2-x --> n = y * (2k-2) + 2 - x --> n+x-2 = y * (2k-2) ...(II)
+
+        thus we need to find the factor of n-x and n+x-2 that is even, so we can extract k from it.
+        if k >= x, it counted as possible k.
+        otherwise, x will not be present in the sequence.
+
+        overall time complexity: O(sqrt(N)) --> finding factor of n-x and n+x-2.
     */
+    int n, x;
     cin >> n >> x;
-    s.clear();
-    f(n-x);
-    f(n+x-2);
+
+    set<int> s;
+
+    int p = n-x, q = n+x-2;
+
+    for(int i = 1; i * i <= p; i++) {
+        if(p%i==0) {
+            if(i%2==0) {
+                int k = (i+2)/2;
+                if(k >= max(2, x)) s.insert(k);
+            }
+            if((p/i)%2==0) {
+                int k = (p/i+2)/2;
+                if(k >= max(2, x)) s.insert(k);
+            }
+        }
+    }
+
+    for(int i = 1; i * i <= q; i++) {
+        if(q%i==0) {
+            if(i%2==0) {
+                int k = (i+2)/2;
+                if(k >= max(2, x)) s.insert(k);
+            }
+            if((q/i)%2==0) {
+                int k = (q/i+2)/2;
+                if(k >= max(2, x)) s.insert(k);
+            }
+        }
+    }
+
     cout << s.size() << endl;
 }
 
