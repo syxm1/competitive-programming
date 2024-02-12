@@ -115,34 +115,58 @@ const ll INF = 1e18;
 
 #define endl "\n"
 
-int n, b, x;
-vi c;
+/*
+ternary search on k.
+*/
 
-int f(int k) {
-    
+ll n, b, x;
+vl c;
+
+ll f(ll k) {
+    ll ret = 0;
+    for(int i = 0; i < n; i++) {
+        ll pairs;
+        if(c[i] <= k) {
+            pairs = (c[i] * (c[i] - 1) / 2);
+        } else {
+            ll p = c[i] / k;
+            ll q = c[i] % k;
+            ll tot = p * k;
+
+            ll x = p * ((k-1) * tot - p * k * (k-1) / 2);
+            ll y = q * (tot - p) + q * (q-1) / 2;
+
+            pairs = x + y;    
+        }
+
+        ret += pairs * b;
+    }
+
+    ret -= (k-1) * x;
+    return ret;
 }
 
 void solve(int tc) {
     cin >> n >> b >> x;
 
-    int mx=1;
+    ll mx=1;
 
     c.resize(n);
-    for(int &i : c) {
+    for(ll &i : c) {
         cin >> i;
         mx = max(mx, i);
     }
 
-    int lo = 2, hi = mx, ans = f(1);
+    ll lo = 2, hi = mx, ans = 0;
     while(lo <= hi) {
-        int m = (lo + hi) >> 1;
-        int p = f(m-1), q = f(m);
-        if(p <= q) {
+        ll m = (lo + hi) >> 1;
+        ll a = f(m-1), b = f(m);
+        if(a <= b) {
             lo = m+1;
-            ans = max(ans, q);
+            ans = max(ans, b);
         } else {
             hi = m-1;
-            ans = max(ans, p);
+            ans = max(ans, a);
         }
     }
 
@@ -156,7 +180,7 @@ auto begin = std::chrono::high_resolution_clock::now();
 
 setIO();
 int tc = 1;
-// cin >> tc;
+cin >> tc;
 
 for(int i = 1; i <= tc; i++)
     solve(i);
