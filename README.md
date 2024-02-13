@@ -1,3 +1,3 @@
 # competitive-programming 
 
-topics related to competitive programming (including algorithms, problems i have solved, etc).
+topics related to competitive programming (including algorithms, problems that i've solved, etc).
