@@ -1,4 +1,6 @@
-// syxm1
+/*
+    syxm1
+*/
 
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
@@ -20,6 +22,12 @@ using pll = pair<ll, ll>;
 // pbds
 template<typename T> using ordered_set =
     tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> using ordered_multiset =
+    tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> using decreasing_ordered_set =
+    tree<T, null_type, greater<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> using decreasing_ordered_multiset =
+    tree<T, null_type, greater_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define ook(x) order_of_key(x)
 #define fbo(x) find_by_order(x)
 
@@ -106,7 +114,7 @@ inline namespace Modular { // source : "https://codeforces.com/blog/entry/63903"
 //constant
 const ld eps = 1e-9, pi = acos(-1);
 const int inf = 2e9;
-const ll INF = 1e18;
+const ll INF = 2e18;
 
 // const int dx[4] = {-1, 0, 1, 0}; // clockwise
 // const int dy[4] = {0, 1, 0, -1}; // starting from N
