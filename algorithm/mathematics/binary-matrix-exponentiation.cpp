@@ -4,7 +4,9 @@
     CSES - Fibonacci Numbers
 
     matrix exponentiation.
+    
     https://rosettacode.org/wiki/Fibonacci_matrix-exponentiation
+    https://zobayer.blogspot.com/2010/11/matrix-exponentiation.html
 */
 
 #include<bits/stdc++.h>
