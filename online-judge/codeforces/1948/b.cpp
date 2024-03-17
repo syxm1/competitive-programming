@@ -121,52 +121,47 @@ const ll INF = 2e18;
 // const int ddx[8] = {-1, -1, -1, 0, 1, 1, 1, 0}; // clockwise
 // const int ddy[8] = {-1, 0, 1, 1, 1, 0, -1, -1}; // starting from NW
 
-// #define endl "\n"
+#define endl "\n"
 
 bool sorted(vi &a) {
-    bool ret = 1;
-    for(int i = 1; i < sz(a); i++) {
-        if(a[i] < a[i-1]) ret = 0;
+    bool res = 1;
+    for(int i = 0; i < sz(a) - 1; i++) {
+        if(a[i+1] < a[i]) res = 0;
     }
-    return ret;
+    return res;
 }
 
 void solve(int tc) {
     int n;
     cin >> n;
 
-    vector<int> a(n), b;
-
+    vi a(n), b;
     for(int i = 0; i < n; i++) {
         cin >> a[i];
     }
 
-    for(int x = 0; x < n; x++) {
+    for(int xxx = 0; xxx < n; xxx++) {
         b.clear();
         for(int i = 0; i < sz(a) - 1; i++) {
             if(a[i] > a[i+1]) {
-                if(a[i] == 0) {
-                    b.pb(0);
-                } else {
-                    vi d;
-                    while(a[i]) {
-                        d.pb(a[i] % 10);
-                        a[i] /= 10;
-                    }
-                    reverse(all(d));
-                    for(int i : d) {
-                        b.pb(i);
-                    }
+                vi temp;
+                while(a[i]) {
+                    temp.push_back(a[i] % 10);
+                    a[i] /= 10;
+                }
+
+                reverse(all(temp));
+
+                for(int x : temp) {
+                    b.push_back(x);
                 }
             } else {
-                b.pb(a[i]);
+                b.push_back(a[i]);
             }
         }
-        b.pb(a.back());
+        b.push_back(a.back());
         a = b;
-        // for(int i = 0; i < sz(b); i++) {
-        //     cout << b[i] << ' ';
-        // } cout << endl;
+
         if(sorted(a)) {
             cout << "YES" << endl;
             return;
