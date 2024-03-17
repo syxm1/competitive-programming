@@ -129,11 +129,11 @@ void solve(int tc) {
 
     const int n = s.length();
 
-    for(int len = n/2; len >= 1; len--) { // iterate over possible len of the first half of the tandem.
+    for(int len = n/2; len >= 1; len--) { // iterate over possible len of the first half of the tandem substring.
         int cnt = 0; // count of the matching pairs (i, i + len).
         for(int i = 0; i < n - len; i++) {
             cnt += (s[i] == s[i+len] || s[i] == '?' || s[i+len] == '?'); // check if index i is matched with index i + len.
-            if(i - len >= 0) cnt -= (s[i-len] == s[i] || s[i-len] == '?' || s[i] == '?'); // if i - len >= 0 i.e. we should subtract the element that already out of our len.
+            if(i - len >= 0) cnt -= (s[i-len] == s[i] || s[i-len] == '?' || s[i] == '?'); // if i - len >= 0 i.e. i - len is out of our substring, we should subtract the element that already out of the substring.
             if(cnt == len && i - len >= -1) { // if number of matching pairs equal to len now, then the substring is tandem repeating.
                 cout << 2 * len << endl;
                 return;
