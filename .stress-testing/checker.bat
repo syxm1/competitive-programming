@@ -1,9 +1,17 @@
 @echo off
 D:
-cd \Workspace\Competitive Programming
+cd \Workspace\Competitive Programming 
+:: path
+
 g++ -std=c++17 test.cpp -o  test
+:: test case generator
+
 g++ -std=c++17 soln.cpp -o  soln
+:: wrong solutioin
+
 g++ -std=c++17 brute.cpp -o  brute 
+:: correct solution
+
 for /l %%x in (1, 1, 100) do (
     test > input.in
     soln < input.in > output.out 
