@@ -1,5 +1,7 @@
 // syxm1
 
+// https://cp-algorithms.com/graph/lca_binary_lifting.html
+
 #include <bits/stdc++.h>
 
 using namespace std;
