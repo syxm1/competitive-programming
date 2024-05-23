@@ -1,16 +1,5 @@
-/**************************
-* syxm1
-* created: 2024-05-23 23:28 
-**************************/
-
 #include<bits/stdc++.h>
 using namespace std;
-
-#ifndef ONLINE_JUDGE
-#include "local/debug.h"
-#else 
-#define trace(...) 37
-#endif
 
 using ll = long long;
 
