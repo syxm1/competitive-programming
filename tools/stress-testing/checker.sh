@@ -1,3 +1,5 @@
+# https://youtu.be/S48QUOIkoNc
+
 ./$1 < $2 > output
 H1=`md5sum output`
 H2=`md5sum $3`
