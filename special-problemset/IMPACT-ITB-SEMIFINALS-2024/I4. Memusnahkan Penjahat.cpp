@@ -8,28 +8,23 @@ using namespace std;
 
 using ll = long long;
 
-// konsep dasar binary search: https://www.geeksforgeeks.org/binary-search/ 
-
-const double eps = 1e-6; // gawe handle precission-error
+const double eps = 1e-6;
 
 int n;
 
-// jarak euclid
 double dist(double x1, double y1, double x2, double y2) {
     return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 }
 
-// fungsi gawe nentukno misal jari-jarine 'r', piro kotak sing kenek.
 int f(double r) {
-    double px = r/2.00, py = 0; // titik pusat lingkaran
-    int ret = 0; // hasil akhir (cuma x positif)
-    for (int x = 0; x <= (int) r/2 + r; x++) { // iterasi x dari 0 sampai sisi kanan lingkaran
-        if ((double) x == px || (double) x == px + 0.5) continue; // handle kalo titik sekarang tepat diatas pusat, atau kehitung dua kali
-        // binary search gawe nyari y paling tinggi dengan x sekarang
-        int lo = 0, hi = 40000, cnt = 0; // cnt: y paling tinggi
+    double px = r/2.00, py = 0;
+    int ret = 0; 
+    for (int x = 0; x <= (int) r/2 + r; x++) {  
+        if ((double) x == px || (double) x == px + 0.5) continue;
+        int lo = 0, hi = 40000, cnt = 0; 
         while (lo <= hi) {
             int y = (lo + hi) >> 1;
-            if (dist(x, y, px, py) <= r + eps) { // jarak (x,y) ke pusat (px, py) <= r, onok eps gawe jogo2, soale presisi c++ elek
+            if (dist(x, y, px, py) <= r + eps) { 
                 lo = y+1;
                 cnt = y;
             } else {
@@ -44,7 +39,6 @@ int f(double r) {
 void test_case() {
     cin >> n;
     
-    // binary search jawaban
     int lo = 0, hi = 40000, ans = 40000; // ans: jawaban akhir
     while(lo <= hi) {
         int md = (lo + hi) >> 1;
