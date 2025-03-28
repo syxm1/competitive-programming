@@ -1,7 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;  
-
-template<typename T> struct matrix {
+template <typename T> struct matrix {
   // const int mod = 1e9+7;
   vector<vector<T>> M;
 
@@ -84,7 +81,8 @@ template<typename T> struct matrix {
     matrix<T> ret = identity(M.size());
     matrix<T> tmp = *this;
     while (x) {
-      if (x & 1) ret = ret * tmp;
+      if (x & 1)
+        ret = ret * tmp;
       tmp = tmp * tmp;
       x >>= 1;
     }
@@ -95,10 +93,12 @@ template<typename T> struct matrix {
     T sign = (x + y) % 2 == 1 ? -1 : 1;
     matrix<T> mat;
     for (int i = 0; i < M.size(); i++) {
-      if (i == x) continue;
+      if (i == x)
+        continue;
       mat.M.push_back({});
       for (int j = 0; j < M[0].size(); j++) {
-        if (j == y) continue;
+        if (j == y)
+          continue;
         mat.M.back().push_back(M[i][j]);
       }
     }
