@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int int64_t
+
+signed main() {
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+
+  vector<bool> is_prime(1e6 + 5, 1);
+  vector<int> prime;
+
+  for (int i = 2; i < 1e6 + 5; i++) {
+    if (!is_prime[i])
+      continue;
+    prime.push_back(i);
+    for (int j = i * i; j < 1e6 + 5; j += i) {
+      is_prime[j] = false;
+    }
+  }
+
+  const int n = prime.size();
+
+  int q;
+  cin >> q;
+
+  while (q--) {
+    int a;
+    cin >> a;
+
+    int lo = 0, hi = n - 2, id = 0;
+    while (lo <= hi) {
+      int md = (lo + hi) >> 1;
+      int cur = prime[md] * prime[md + 1];
+      if (cur * cur <= a)
+        id = md, lo = md + 1;
+      else
+        hi = md - 1;
+    }
+
+    int ans = prime[md] * prime[md + 1];
+    ans *= ans;
+
+    cout <<
+  }
+}
