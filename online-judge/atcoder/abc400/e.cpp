@@ -38,13 +38,6 @@ signed main() {
   int q;
   cin >> q;
 
-  // cout << ell.size() << '\n';
-  // for (int i = 0; i < (int)ell.size(); i++) {
-  //   cout << ell[i] << ' ';
-  // }
-  // cout << '\n';
-  // cout << ell.size() << '\n';
-
   while (q--) {
     int a;
     cin >> a;
