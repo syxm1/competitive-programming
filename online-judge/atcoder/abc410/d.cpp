@@ -1,10 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int int64_t
-
-const int inf = 1e9;
-
 int n, m;
 vector<vector<bool>> reachable;
 vector<vector<pair<int, int>>> adj;
