@@ -14,9 +14,11 @@ void dfs(int cur_node, int cur_score) {
     return;
   
   reachable[cur_node][cur_score] = 1;
+  
   for (auto [nxt_node, weight] : adj[cur_node]) {
     int nxt_score = (cur_score ^ weight);
-    if (!reachable[nxt_node][nxt_score]) dfs(nxt_node, nxt_score);
+    if (!reachable[nxt_node][nxt_score]) 
+      dfs(nxt_node, nxt_score);
   }
 }
 
