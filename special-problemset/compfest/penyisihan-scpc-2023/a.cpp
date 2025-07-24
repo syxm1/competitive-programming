@@ -7,15 +7,12 @@ signed main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
 
-  int n;
+  int n, ans = 1e9;
   cin >> n;
 
-  int ans = 1e9;
-  
   for (int i = 0; i < n; i++) {
-    int x;
-    cin >> x;
-    ans = min(ans, abs(x));
+    int a; cin >> a;
+    ans = min(ans, abs(a));
   }
 
   cout << ans << '\n';

@@ -48,11 +48,5 @@ signed main() {
 
   dfs(0);
 
-  /*
-  for (int i = 0; i < n; i++) cout << inv[i] << ' '; cout << '\n';
-  for (int i = 0; i < n; i++) cout << one[i] << ' '; cout << '\n';
-  for (int i = 0; i < n; i++) cout << zero[i] << ' '; cout << '\n';
-  */
-
   cout << inv[0] << '\n';
 }
