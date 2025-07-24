@@ -1,20 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define int int64_t
+
 int n, m;
 vector<vector<bool>> reachable;
 vector<vector<pair<int, int>>> adj;
 
-void dfs(int cur_node, int cur_score) {
-  if (cur_node == n - 1 && reachable[cur_node][cur_score]) 
-    return;
-  
-  reachable[cur_node][cur_score] = 1;
-  
-  for (auto [nxt_node, weight] : adj[cur_node]) {
-    int nxt_score = (cur_score ^ weight);
-    if (!reachable[nxt_node][nxt_score]) 
-      dfs(nxt_node, nxt_score);
+void dfs(int cur_node, int cur_val) {
+  for (auto [nxt_node, wei] : adj[cur_node]) {
+    int nxt_val = (cur_val ^ wei);
+
+    if (!reachable[nxt_node][nxt_val]) {
+      reachable[nxt_node][nxt_val] = 1;      
+      dfs(nxt_node, nxt_val);
+    }
   }
 }
 
@@ -30,11 +30,9 @@ signed main() {
   for (int i = 0; i < m; i++) {
     int u, v, w;
     cin >> u >> v >> w;
-    --u, --v;
-    adj[u].push_back(make_pair(v, w));
+    adj[--u].push_back(make_pair(--v, w));
   }
-  
-  reachable[0][0] = 1;
+
   dfs(0, 0);
 
   for (int j = 0; j < (1 << 10); j++) {
